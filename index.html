@@ -1,32 +1,165 @@
+<!DOCTYPE html>
 <html>
-    <body>
-        <button onclick="gs()">gs</button>
-        <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase.js"></script>
-        <script>
-            // Your web app's Firebase configuration
-            var firebaseConfig = {
-              apiKey: "AIzaSyC-pKtCM2VQKsxnO0zCU0m7OdNj7W0Zr7c",
-              authDomain: "authfirebase-2533f.firebaseapp.com",
-              databaseURL: "https://authfirebase-2533f.firebaseio.com",
-              projectId: "authfirebase-2533f",
-              storageBucket: "authfirebase-2533f.appspot.com",
-              messagingSenderId: "537279639100",
-              appId: "1:537279639100:web:8ed5796c0f784074a2dd39"
-            };
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-         
-            gs=()=>{
-            base_provider = new firebase.auth.GoogleAuthProvider()
-                firebase.auth().signInWithPopup(base_provider).then(function(result){
-                    console.log(result)
-                    console.log("Su..")
-                }).catch(function(err){
-                    console.log(err)
-                    console.log("fa..")
-                })
+<head>
+	<meta charset="utf-8">
+	<title>Form-v8 by Colorlib</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="css/sourcesanspro-font.css">
+	<!-- Main Style Css -->
+	<link rel="stylesheet" href="css/style.css"/>
+	<script>
+		function pass_validation()
+		{
+		  if (document.getElementById('password').value ==document.getElementById('confirm_password').value) {
+			document.getElementById('message').style.color = 'green';
+			document.getElementById('message').innerHTML = 'matching';
+		  } else {
+			document.getElementById('message').style.color = 'red';
+			document.getElementById('message'). innerHTML =' not matching';   
+			return false;
+			alert("passwaord must same");
+			}
+			return true
+		}
+		</script>
+</head>
+<body class="form-v8">
+	<div class="page-content">
+		<div class="form-v8-content">
+			<div class="form-left">
+				<img src="images/form-v8.jpg" alt="form">
+			</div>
+			<div class="form-right">
+				<div class="tab">
+					<div class="tab-inner">
+						<button class="tablinks" onclick="openCity(event, 'sign-up')" >Sign Up</button>
+					</div>
+					<div class="tab-inner">
+						<button class="tablinks" onclick="openCity(event, 'sign-in')" id="defaultOpen">Sign In</button>
+					</div>
+				</div>
+				<form class="form-detail" action="#" id="signup-form" method="post">
+					<div class="tabcontent" id="sign-up">
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input type="text" name="full_name" id="full_name" class="input-text" required>
+								<span class="label">Username</span>
+		  						<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input type="text" name="your_email" id="your_email" class="input-text" required>
+								<span class="label">E-Mail</span>
+		  						<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input type="text" name="your_phone" id="phone" class="input-text" required>
+								<span class="label">Phone Number</span>
+		  						<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input type="password" id="password" name="password1"  onkeyup='pass_validation();' class="input-text" required>
+								<span class="label">Password</span>
+								<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input type="password" id="confirm_password" name="password2" required onkeyup='pass_validation();' class="input-text" required>
+								<span class="label">Comfirm Password</span>
+								<span class="border"></span>
+							</label>
+							
+						</div>
+						<div class="form-row-last">
+						<b><span id='message'></span></b></div>
+						<div class="form-row-last">
+							<input type="submit" name="register" class="register" value="Register">
+						</div>
+					</div>
+				</form>
+				<form class="form-detail" action="#" id="login-form" method="post">
+					<div class="tabcontent" id="sign-in">
+						<!--div class="form-row">
+							<label class="form-row-inner">
+								<input type="text" name="full_name_1" id="full_name_1" class="input-text" required>
+								<span class="label">Username</span>
+		  						<span class="border"></span>
+							</label>
+						</div-->
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input type="text" name="your_email_1" id="login-email" class="input-text" required>
+								<span class="label">E-Mail</span>
+		  						<span class="border"></span>
+							</label>
+						</div>
+						<div class="form-row">
+							<label class="form-row-inner">
+								<input type="password" name="password_1" id="login-password" class="input-text" required>
+								<span class="label">Password</span>
+								<span class="border"></span>
+							</label>
+						</div>
+						<!--div class="form-row">
+							<label class="form-row-inner">
+								<input type="password" name="comfirm_password_1" id="comfirm_password_1" class="input-text" required>
+								<span class="label">Comfirm Password</span>
+								<span class="border"></span>
+							</label>
+						</div-->
+						<div class="form-row-last">
+							<input type="submit" name="register" class="register" value="Sign In">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function openCity(evt, cityName) {
+		    var i, tabcontent, tablinks;
+		    tabcontent = document.getElementsByClassName("tabcontent");
+		    for (i = 0; i < tabcontent.length; i++) {
+		        tabcontent[i].style.display = "none";
+		    }
+		    tablinks = document.getElementsByClassName("tablinks");
+		    for (i = 0; i < tablinks.length; i++) {
+		        tablinks[i].className = tablinks[i].className.replace(" active", "");
+		    }
+		    document.getElementById(cityName).style.display = "block";
+		    evt.currentTarget.className += " active";
+		}
+		document.getElementById("defaultOpen").click();
+	</script>
+</body>
+<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyC-pKtCM2VQKsxnO0zCU0m7OdNj7W0Zr7c",
+        authDomain: "authfirebase-2533f.firebaseapp.com",
+        databaseURL: "https://authfirebase-2533f.firebaseio.com",
+        projectId: "authfirebase-2533f"
+    };
+    firebase.initializeApp(config);
+    
+    // make auth and firestore references
+    const auth = firebase.auth();
+    const db = firebase.firestore();
 
-         }
-        </script>        
-    </body>
+    // update firestore settings
+    db.settings({ timestampsInSnapshots: true });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="form.js"></script>
 </html>
